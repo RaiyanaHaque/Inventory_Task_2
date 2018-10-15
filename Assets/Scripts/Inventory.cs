@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
 
-    [SerializeField] List<Item> items;
+    [SerializeField] List<Item> items; 
     [SerializeField] Transform itemsParent;
 	[SerializeField] ItemSlot[] itemSlots;
 
-    public event Action<Item> OnItemLeftClikedEvent;
+    public event Action<Item> OnItemLeftClikedEvent; //Equippable/Interact with item
 
     private void Start()
     {
@@ -25,12 +25,12 @@ public class Inventory : MonoBehaviour {
 		RefreshUI();
 	}
 
-	private void RefreshUI()
+	private void RefreshUI() //Everytime change happens in inventory
 	{
 		int i = 0;
 		for(; i < items.Count && i < itemSlots.Length; i++)
 		{
-			itemSlots[i].Item = items[i];
+			itemSlots[i].Item = items[i]; //Assign item for every item slot
 		}
 
 		for (; i < itemSlots.Length; i++) //Remaining slots with no items are set to null
@@ -42,9 +42,9 @@ public class Inventory : MonoBehaviour {
 	public bool AddItem(Item item)
 	{
 		if (IsFull())
-			return false;
+			return false; //Can't add items if full
 
-		items.Add(item);
+		items.Add(item); //Add items to list
 		RefreshUI();
 		return true;
 	}
@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour {
 	{
 		if (items.Remove(item))
 		{
-			RefreshUI();
+			RefreshUI(); //If item removed then true
 			return true;
 		}
 
@@ -62,6 +62,6 @@ public class Inventory : MonoBehaviour {
 
 	public bool IsFull()
 	{
-		return items.Count >= itemSlots.Length;
+		return items.Count >= itemSlots.Length; //Items greater than item slots available
 	}
 }

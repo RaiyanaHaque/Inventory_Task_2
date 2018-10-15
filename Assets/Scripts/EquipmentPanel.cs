@@ -8,7 +8,7 @@ public class EquipmentPanel : MonoBehaviour
     [SerializeField] Transform equipmentSlotsParent;
     [SerializeField] EquipmentSlot[] equipmentSlots;
 
-    public event Action<Item> OnItemLeftClikedEvent;
+    public event Action<Item> OnItemLeftClikedEvent; //Equip it on click
 
     private void Start()
     {
@@ -23,13 +23,13 @@ public class EquipmentPanel : MonoBehaviour
          equipmentSlots = equipmentSlotsParent.GetComponentInChildren<EquipmentSlot>();
      } */
 
-    public bool AddItem(EquippableItem item, out EquippableItem previousItem)
+    public bool AddItem(EquippableItem item, out EquippableItem previousItem) 
     {
-        for (int i = 0; i < equipmentSlots.Length; i++)
+        for (int i = 0; i < equipmentSlots.Length; i++) //Look for slots
         {
-            if (equipmentSlots[i].EquipmentType == item.EquipmentType)
+            if (equipmentSlots[i].EquipmentType == item.EquipmentType) //If slot can hold the item type
             {
-                previousItem = (EquippableItem)equipmentSlots[i].Item;
+                previousItem = (EquippableItem)equipmentSlots[i].Item; //Replace old item
                 equipmentSlots[i].Item = item;
                 return true;
             }
@@ -38,11 +38,11 @@ public class EquipmentPanel : MonoBehaviour
         return false;
     }
 
-    public bool RemoveItem(EquippableItem item)
+    public bool RemoveItem(EquippableItem item) 
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            if (equipmentSlots[i].Item == item)
+            if (equipmentSlots[i].Item == item) //Get the item out of the equipment slot
             {
                 equipmentSlots[i].Item = null;
                 return true;

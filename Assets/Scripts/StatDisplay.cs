@@ -2,15 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class StatDisplay : MonoBehaviour {
+using UnityEngine.EventSystems;
 
-	public Text NameText;
+public class StatDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+
+
+    public Text NameText;
 	public Text ValueText;
-
-	private void OnValidate()
+    [SerializeField] StatTooltip tooltip;
+    private void OnValidate()
 	{
 		Text[] texts = GetComponentsInChildren<Text>();
+		//Same order as they appear in the hierarchy
 		NameText = texts[0];
 		ValueText = texts[1];
 	}
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+
+    }
 }

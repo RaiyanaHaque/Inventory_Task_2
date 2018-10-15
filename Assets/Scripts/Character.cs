@@ -5,7 +5,7 @@ using Inventor.CharacterStats;
 
 public class Character : MonoBehaviour
 {
-	public CharacterStat Strength;
+	public CharacterStat Strength; 
 	public CharacterStat Agility;
 	public CharacterStat Intelligence;
 	public CharacterStat Vitality;
@@ -16,17 +16,17 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         statPanel.SetStats(Strength, Agility, Intelligence, Vitality);
-        statPanel.UpdatStatValue();
+        statPanel.UpdateStatValue();
 
-        inventory.OnItemLeftClikedEvent += EquipFromInventory;
-        equipmentPanel.OnItemLeftClikedEvent += UnequipFromEquipPanel;
+        inventory.OnItemLeftClikedEvent += EquipFromInventory; //Item clicked equip it from inventory
+        equipmentPanel.OnItemLeftClikedEvent += UnequipFromEquipPanel; //Item clicked goes back to inventory
     }
 
     private void EquipFromInventory(Item item)
     {
         if (item is EquippableItem)
         {
-            Equip((EquippableItem)item);
+            Equip((EquippableItem)item); //Equip only equippable items when clicked
         }
     }
 
@@ -40,36 +40,36 @@ public class Character : MonoBehaviour
 
     public void Equip(EquippableItem item)
     {
-        if(inventory.RemoveItem(item))
+        if(inventory.RemoveItem(item)) //Remove item from inventory 
         {
             EquippableItem previousItem;
-            if (equipmentPanel.AddItem(item, out previousItem))
+            if (equipmentPanel.AddItem(item, out previousItem)) //Add to equipment panel
             {
-                if(previousItem != null)
+                if(previousItem != null) //Equipment slot already occupied
                 {
-                    inventory.AddItem(previousItem);
+                    inventory.AddItem(previousItem); //Return it back to inventory
                     previousItem.Unequip(this);
-                    statPanel.UpdatStatValue();
+                    statPanel.UpdateStatValue();
                 }
 
                 item.Equip(this);
-                statPanel.UpdatStatValue();
+                statPanel.UpdateStatValue(); //Update the values
             }
 
             else
             {
-                inventory.AddItem(item);
+                inventory.AddItem(item); //Can't be equipped = return to inventory
             }
         }
     }
 
     public void Unequip(EquippableItem item)
     {
-        if (!inventory.IsFull() && equipmentPanel.RemoveItem(item))
+        if (!inventory.IsFull() && equipmentPanel.RemoveItem(item)) //Inventory is not full
         {
             item.Unequip(this);
-            statPanel.UpdatStatValue();
-            inventory.AddItem(item);
+            statPanel.UpdateStatValue(); //Update value after unequiping
+            inventory.AddItem(item); //Add item back to inventory
         }
     }
 

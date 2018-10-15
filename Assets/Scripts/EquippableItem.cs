@@ -17,13 +17,15 @@ public enum EquipmentType
 public class EquippableItem : Item
 
 {
+	//Four stats
 	public int StrengthBonus;
 	public int AgilityBonus;
 	public int IntelligenceBonus;
 	public int VitalityBonus;
 
-	[Space]
+	[Space] //Space b
 
+	//Percentage bonus to the base value
 	public float StrengthPercentBonus;
 	public float AgilityPercentBonus;
 	public float IntelligencePercentBonus;
@@ -33,8 +35,9 @@ public class EquippableItem : Item
 
 	public EquipmentType EquipmentType;
 
-    public void Equip(Character c)
+    public void Equip(Character c) //Character only input param
     {
+		//Add on score
         if (StrengthBonus != 0)
             c.Strength.AddModifier(new StatModifier(StrengthPercentBonus, StatModType.Flat, this));
         if (AgilityBonus != 0)
@@ -54,7 +57,7 @@ public class EquippableItem : Item
             c.Vitality.AddModifier(new StatModifier(VitalityPercentBonus, StatModType.PercentMult, this));
     }
 
-    public void Unequip(Character c)
+    public void Unequip(Character c) //Remove all the modiefied points
     {
         c.Strength.RemoveAllModifiersFromSource(this);
         c.Agility.RemoveAllModifiersFromSource(this);
