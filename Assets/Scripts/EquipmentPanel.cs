@@ -32,6 +32,9 @@ public class EquipmentPanel : MonoBehaviour
                 previousItem = (EquippableItem)equipmentSlots[i].Item; //Replace old item
                 equipmentSlots[i].Item = item;
                 return true;
+            } else
+            {
+                Debug.Log("Slot does not exist");
             }
         }
         previousItem = null;

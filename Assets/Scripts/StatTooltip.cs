@@ -31,32 +31,44 @@ public class StatTooltip : MonoBehaviour
         sb.Append(statName); //Add stat name
         sb.Append(" ");
         sb.Append(stat.Value);
-        sb.Append(" (");
-        sb.Append(stat.BaseVal);
 
-        if (stat.Value > stat.BaseVal)
-            sb.Append("+"); //Only plus sign if stat val bigger that base val
+        if (stat.Value != stat.BaseVal) //Parantheses should not should show unless theres any changes
+        {
+            sb.Append(" (");
+            sb.Append(stat.BaseVal);
 
-        sb.Append(stat.Value - stat.BaseVal);
-        sb.Append(")"); //Difference calc
+            if (stat.Value > stat.BaseVal)
+                sb.Append("+"); //Only plus sign if stat val bigger that base val
+
+            sb.Append(System.Math.Round(stat.Value - stat.BaseVal, 4)); //Due to floats, use significant numbers
+            sb.Append(")"); //Difference calc
+        }
+        
         return sb.ToString();
     }
 
     private string GetStatModifierText(CharacterStat stat)
     {
-        sb.Length = 0;
-        foreach (StatModifier mod in stat.StatModifiers)
+        sb.Length = 0; //Reset
+        foreach (StatModifier mod in stat.StatModifiers) //Look at all stat modifiers
         {
-            if (sb.Length > 0)
+            if (sb.Length > 0) //If not the first modifier added to the string
                 sb.AppendLine();
             if (mod.Value > 0)
                 sb.Append("+");
 
-            sb.Append(mod.Value);
+            if (mod.Type == StatModType.Flat) //Check if the modif is a percentage
+            {
+                sb.Append(mod.Value);
+            } else
+            {
+                sb.Append(mod.Value * 100);
+                sb.Append("%");
+            }
+            
+            EquippableItem item = mod.Source as EquippableItem; //Acess source variable
 
-            EquippableItem item = mod.Source as EquippableItem;
-
-            if (item != null)
+            if (item != null) //Not equippable
             {
                 sb.Append(" ");
                 sb.Append(item.ItemName);

@@ -1,49 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Inventor.CharacterStats;
+public class StatPanel : MonoBehaviour
+{
+    [SerializeField] StatDisplay[] statDisplays;
+    [SerializeField] string[] statNames;
 
-public class StatPanel : MonoBehaviour {
+    private CharacterStat[] stats;
 
-	[SerializeField] StatDisplay[] statDisplays;
-	[SerializeField] string[] statNames; //Change stat names in UI
+    private void OnValidate()
+    {
+        statDisplays = GetComponentsInChildren<StatDisplay>();
+        UpdateStatNames();
+    }
 
-	private CharacterStat[] stats;
+    public void SetStats(params CharacterStat[] charStats)
+    {
+        stats = charStats;
 
-	private void OnValidate()
-	{
-		statDisplays = GetComponentsInChildren<StatDisplay>();
-	}
+        if (stats.Length > statDisplays.Length)
+        {
+            Debug.LogError("Not Enough Stat Displays!");
+            return;
+        }
 
-	public void SetStats(params CharacterStat[] charStats) //Array of character stats
-	{
-		stats = charStats;
+        for (int i = 0; i < statDisplays.Length; i++)
+        {
+            statDisplays[i].gameObject.SetActive(i < stats.Length);
 
-		if(stats.Length > statDisplays.Length) //More stats than stats display
-		{
-			Debug.LogError("Not enough stat displays");
-				return;
-		}
+            if (i < stats.Length)
+            {
+                statDisplays[i].Stat = stats[i];
+            }
+        }
+    }
 
-		for (int i = 0; i < statDisplays.Length; i++) //More stat displays than stats
-		{
-			statDisplays[i].gameObject.SetActive(i < stats.Length);
-		}
-	} 
+    public void UpdateStatValues()
+    {
+        for (int i = 0; i < stats.Length; i++)
+        {
+            statDisplays[i].UpdateStatValue();
+        }
+    }
 
-	public void UpdateStatValue()
-	{
-		for(int i = 0; i < stats.Length; i++)
-		{
-			statDisplays[i].ValueText.text = stats[i].Value.ToString(); //Sets correspoinding stat display values. called from character class
-		}
-	}
-
-	public void UpdateStatNames() //Sets correspoing names from the stat displays
-	{
-		for (int i = 0; i < statNames.Length; i++)
-		{
-			statDisplays[i].NameText.text = statNames[i];
-		}
-	}
+    public void UpdateStatNames()
+    {
+        for (int i = 0; i < statNames.Length; i++)
+        {
+            statDisplays[i].Name = statNames[i];
+        }
+    }
 }
