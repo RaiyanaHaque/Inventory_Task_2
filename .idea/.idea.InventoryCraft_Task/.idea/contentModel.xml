@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\rhaque\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\rhaque\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_InventoryCraft_Task.169065220.00" t="ExcludeRecursive" />
+    <e p="D:\Unity Task 2\InventoryCraft_Task" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="FreePixelFood" t="Include">
+          <e p="ReadMe.txt" t="Include" />
+        </e>
+        <e p="Inventory Items" t="Include">
+          <e p="FreePixelGear" t="Include">
+            <e p="ReadMe.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Character.cs" t="Include" />
+          <e p="EquipmentPanel.cs" t="Include" />
+          <e p="EquipmentSlot.cs" t="Include" />
+          <e p="EquippableItem.cs" t="Include" />
+          <e p="Inventory.cs" t="Include" />
+          <e p="InventoryInput.cs" t="Include" />
+          <e p="Item.cs" t="Include" />
+          <e p="ItemChest.cs" t="Include" />
+          <e p="ItemSlot.cs" t="Include" />
+          <e p="ItemTooltip.cs" t="Include" />
+          <e p="Player.cs" t="Include" />
+          <e p="StatDisplay.cs" t="Include" />
+          <e p="StatPanel.cs" t="Include" />
+          <e p="Stats" t="Include">
+            <e p="CharacterStat.cs" t="Include" />
+            <e p="StatModifier.cs" t="Include" />
+          </e>
+          <e p="StatTooltip.cs" t="Include" />
+        </e>
+      </e>
+      <e p="InventoryCraft_Task.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
