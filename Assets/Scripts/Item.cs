@@ -14,8 +14,10 @@ public class Item : ScriptableObject {
 
 	private void OnValidate()
 	{
+		//items will have an ID but they will also be unique from their origin
 		string path = AssetDatabase.GetAssetPath(this);
 		id = AssetDatabase.AssetPathToGUID(path);
+		//Assign own item ID replacing global one
 	}
 	
 }

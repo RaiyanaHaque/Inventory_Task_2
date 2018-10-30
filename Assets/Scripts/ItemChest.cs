@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class ItemChest : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class ItemChest : MonoBehaviour
 	[SerializeField] Inventory inventory;
 	[SerializeField] SpriteRenderer spriteRenderer;
 	[SerializeField] Color emptyColor;
-	[SerializeField] KeyCode itemPickupKeycode = KeyCode.E;
 
 	private bool inRange;
 	private bool isEmpty;
@@ -21,7 +21,7 @@ public class ItemChest : MonoBehaviour
 	}
 	private void Update()
 	{
-		if (inRange && Input.GetKeyDown(itemPickupKeycode))
+		if (inRange && Input.GetMouseButton(1)) 
 		{
 			if (!isEmpty)
 			{

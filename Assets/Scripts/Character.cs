@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     [SerializeField] StatPanel statPanel;
     private void Awake()
     {
+
+        Time.timeScale = 0;
         statPanel.SetStats(Strength, Agility, Intelligence, Vitality);
         statPanel.UpdateStatValues();
 
