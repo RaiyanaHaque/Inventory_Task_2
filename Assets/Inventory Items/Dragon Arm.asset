@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0ca373cec87eb4a8380dde5d3e26b5, type: 3}
+  m_Name: Dragon Arm
+  m_EditorClassIdentifier: 
+  id: b406b0a7d166bd14abb8d961c5a51fb0
+  ItemName: 
+  Icon: {fileID: 21300032, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
+  StrengthBonus: 2
+  AgilityBonus: 0
+  IntelligenceBonus: 4
+  VitalityBonus: 6
+  StrengthPercentBonus: 0.02
+  AgilityPercentBonus: 0
+  IntelligencePercentBonus: 0
+  VitalityPercentBonus: 0.4
+  EquipmentType: 2
