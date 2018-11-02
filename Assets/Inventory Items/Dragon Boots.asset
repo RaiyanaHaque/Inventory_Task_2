@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0ca373cec87eb4a8380dde5d3e26b5, type: 3}
   m_Name: Dragon Boots
   m_EditorClassIdentifier: 
+  id: 71799049753fe4346a6d23ec10d28bc1
   ItemName: Dragon Boots
-  Icon: {fileID: 21300032, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
+  Icon: {fileID: 21300034, guid: 03dd1ef6fb163214c9e1ac0242dab3ba, type: 3}
   StrengthBonus: 0
   AgilityBonus: 4
   IntelligenceBonus: 0

@@ -10,7 +10,7 @@ public enum EquipmentType
 	Arm,
 	Boots, 
 	Weapon,
-    Ring
+    Misc
 }
 
 [CreateAssetMenu]

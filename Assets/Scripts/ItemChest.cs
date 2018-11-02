@@ -9,8 +9,8 @@ public class ItemChest : MonoBehaviour
 	[SerializeField] Item item;
 	[SerializeField] Inventory inventory;
 	[SerializeField] SpriteRenderer spriteRenderer;
+	[SerializeField] ParticleSystem chestGlow;
 	[SerializeField] Color emptyColor;
-
 	private bool inRange;
 	private bool isEmpty;
 
@@ -28,19 +28,29 @@ public class ItemChest : MonoBehaviour
 				inventory.AddItem(item); //Once the item is added to the inventory
 				isEmpty = true; //Item in chest is null
 				spriteRenderer.color = emptyColor; //Change color when it is empty
+				chestGlow.Stop();
 			}			
 		}
 	}
 
-	private void OnTriggerEnter(Collider other) //In range of the item
+	private void OnTriggerEnter(Collider gameObject) //In range of the item
 	{
-		inRange = true;
-		spriteRenderer.enabled = true;
-	}
+     
+        if (gameObject.CompareTag("Player"))
+        {
+            inRange = true;
+            spriteRenderer.enabled = true;
+            Debug.Log("Working range");
+        }
+   
+    }
 
-	private void OnTriggerExit(Collider other)
+	private void OnTriggerExit(Collider gameObject)
 	{
-		inRange = false;
-		spriteRenderer.enabled = false;
+        if (gameObject.CompareTag("Player"))
+        {
+            inRange = false;
+            spriteRenderer.enabled = false;
+        }
 	}
 }
