@@ -5,15 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    float moveSpeed = 20;
+    float moveSpeed = 14;
 
     // Update is called once per frame
     void Update()
     {
-		 transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime); //Player movement
+		transform.Translate(moveSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, moveSpeed * Input.GetAxis("Vertical") * Time.deltaTime); //Player movement
 		float mouseInput = moveSpeed * Input.GetAxis("Mouse X"); //Get mouse input axis
-		 Vector3 lookHere = new Vector3(0, mouseInput, 0); //X axis follows the cursor position 
-		 transform.Rotate(lookHere); 
+		Vector3 lookHere = new Vector3(0, mouseInput, 0); //X axis follows the cursor position 
+		transform.Rotate(lookHere); 
 
 	
 	}
